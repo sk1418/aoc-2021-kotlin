@@ -1,6 +1,6 @@
-// https://adventofcode.com/2021/day/7
+// https://adventofcode.com/2021/day/9
 fun main() {
-    val today = "Day08"
+    val today = "Day09"
 
     val input = readInput(today)
     val testInput = readTestInput(today)

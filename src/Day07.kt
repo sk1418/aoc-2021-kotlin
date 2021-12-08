@@ -34,23 +34,33 @@ fun main() {
         val avg = ceil(input.average()).toInt()
         return input.sumOf { abs(it - avg).let { d -> (1 + d) * d / 2 } }
     }
+
     measureTimeMillis {
-        println("TEST part1_1: ${part1_1(testInput)}")
-        check(part1_1(testInput) == 37)
+        part1_1(testInput).also {
+            println("TEST part1_1: $it")
+            check(it == 37)
+        }
         println("part1_1: ${part1_1(input)}")
         println()
-        println("TEST part2_1: ${part2_1(testInput)}")
-        check(part2_1(testInput) == 168)
+        part2_1(testInput).also {
+            println("TEST part1_2: $it")
+            check(it == 168)
+        }
         println("part2_1: ${part2_1(input)}")
     }.also { println("::: Way1 elapsed: $it ms") }
-    println("\n>> a faster way <<\n")
+
+    println("\n>> a way faster <<\n")
     measureTimeMillis {
-        println("TEST part1_2: ${part1_2(testInput)}")
-        check(part1_2(testInput) == 37)
+        part1_2(testInput).also {
+            println("TEST part1_2: $it")
+            check(it == 37)
+        }
         println("part1_2: ${part1_2(input)}")
         println()
-        println("TEST part2_2: ${part2_2(testInput)}")
-        check(part2_2(testInput) == 168)
+        part2_2(testInput).also {
+            println("TEST part2_2: $it")
+            check(it == 168)
+        }
         println("part2_2: ${part2_2(input)}")
     }.also { println("::: Way2 elapsed: $it ms") }
 }
