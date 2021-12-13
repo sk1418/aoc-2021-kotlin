@@ -13,17 +13,11 @@ fun main() {
         return HeightMap(input).findBasins().map { it.size }.sortedByDescending { it }.take(3).reduce { a, b -> a * b }
     }
 
-    part1(testInput).also {
-        println("TEST part1: $it")
-        check(it == 15)
-    }
-    println("part1: ${part1(input)}")
+    chkTestInput(part1(testInput), 15, "Part 1")
+    println("[Part 1]: ${part1(input)}")
 
-    part2(testInput).also {
-        println("TEST part2: $it")
-        check(it == 1134)
-    }
-    println("part2: ${part2(input)}")
+    chkTestInput(part2(testInput), 1134, "Part 2")
+    println("[Part 2]: ${part2(input)}")
 }
 
 data class HeightMap(val input: List<String>) {

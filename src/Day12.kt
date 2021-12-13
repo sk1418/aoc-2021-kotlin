@@ -24,17 +24,11 @@ fun main() {
         return graph.uniquePaths.size.toLong()
     }
 
-    part1(testInput).also {
-        println("TEST part1: $it")
-        check(it == 10L)
-    }
-    println("part1: ${part1(input)}")
+    chkTestInput(part1(testInput), 10L, "Part 1")
+    println("[Part 1]: ${part1(input)}")
 
-    part2(testInput).also {
-        println("TEST part2: $it")
-        check(it == 36L)
-    }
-    println("part2: ${part2(input)}")
+    chkTestInput(part2(testInput), 36L, "Part 2")
+    println("[Part 2]: ${part2(input)}")
 }
 
 

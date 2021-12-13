@@ -22,17 +22,11 @@ fun main() {
         }
     }
 
-    part1(testInput).also {
-        println("TEST part1: $it")
-        check(it == 26)
-    }
-    println("part1: ${part1(input)}")
+    chkTestInput(part1(testInput), 26, "Part 1")
+    println("[Part 1]: ${part1(input)}")
 
-    part2(testInput).also {
-        println("TEST part2: $it")
-        check(it == 61229)
-    }
-    println("part2: ${part2(input)}")
+    chkTestInput(part2(testInput), 61229, "Part 2")
+    println("[Part 2]: ${part2(input)}")
 }
 
 /**

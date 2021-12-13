@@ -23,17 +23,11 @@ fun main() {
         return step
     }
 
-    part1(testInput).also {
-        println("TEST part1: $it")
-        check(it == 1656L)
-    }
-    println("part1: ${part1(input)}")
+    chkTestInput(part1(testInput), 1656L, "Part 1")
+    println("[Part 1]: ${part1(input)}")
 
-    part2(testInput).also {
-        println("TEST part2: $it")
-        check(it == 195L)
-    }
-    println("part2: ${part2(input)}")
+    chkTestInput(part2(testInput), 195L, "Part 2")
+    println("[Part 2]: ${part2(input)}")
 }
 
 data class OctopusMatrix(val input: List<String>) {

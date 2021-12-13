@@ -6,22 +6,76 @@ fun main() {
     val testInput = readTestInput(today)
 
     fun part1(input: List<String>): Long {
-        return 0
+        return Paper(input).also { it.applyFold(1) }.countVisible().toLong()
     }
 
     fun part2(input: List<String>): Long {
+        Paper(input).also { it.applyFold() }.printMatrix()
         return 0
     }
 
-    part1(testInput).also {
-        println("TEST part1: $it")
-        check(it == 0L)
-    }
-    println("part1: ${part1(input)}")
+    chkTestInput(part1(testInput), 17L, "Part 1")
+    println("[Part 1]: ${part1(input)}")
 
-    part2(testInput).also {
-        println("TEST part2: $it")
-        check(it == 0L)
+    chkTestInput(part2(testInput), 0L, "Part 2")
+    println("[Part 2]: ${part2(input)}")
+}
+
+data class Paper(val input: List<String>) {
+    private var matrix: Array<IntArray>
+    private var foldRules: List<Pair<String, Int>>
+    private var maxX = 0
+    private var maxY = 0
+
+    operator fun Regex.contains(text: CharSequence): Boolean = this.matches(text)
+
+    init { // parsing input
+        val (pos, folds) = input.fold(mutableListOf<Pair<Int, Int>>() to mutableListOf<Pair<String, Int>>()) { (p, f), e ->
+            (p to f).apply {
+                with(e) {
+                    when {
+                        contains(",") -> p += e.split(",").let { it[0].toInt() to it[1].toInt() }
+                        startsWith("fold along") -> f += e.split(" ")[2].split("=").let { it[0] to it[1].toInt() }
+                    }
+                }
+            }
+        }
+        foldRules = folds
+        maxX = pos.maxOf { it.first }
+        maxY = pos.maxOf { it.second }
+        matrix = Array(maxY + 1) { IntArray(maxX + 1) { 0 } }.apply { pos.forEach { this[it.second][it.first]++ } }
     }
-    println("part2: ${part2(input)}")
+
+    fun countVisible() = (0..maxY).sumOf { y ->
+        (0..maxX).count { x -> matrix[y][x] > 0 }
+    }
+
+    fun applyFold(foldSteps: Int = -1) {
+        foldRules.take(if (foldSteps > 0) foldSteps else foldRules.size).forEach { r ->
+            when (r.first) {
+                "x" -> doXFold(r.second)
+                "y" -> doYFold(r.second)
+            }
+        }
+    }
+
+    fun printMatrix() =
+        (0..maxY).forEach { y ->
+            (0..maxX).forEach { x -> print(if (matrix[y][x] > 0) "#" else ".") }
+            println()
+        }
+
+    private fun doXFold(xIdx: Int) {
+        (0..maxY).forEach { y ->
+            (xIdx + 1..maxX).forEach { x -> matrix[y][2 * xIdx - x] += matrix[y][x] }
+        }
+        maxX = xIdx - 1
+    }
+
+    private fun doYFold(yIdx: Int) {
+        (yIdx + 1..maxY).forEach { y ->
+            (0..maxX).forEach { x -> matrix[2 * yIdx - y][x] += matrix[y][x] }
+        }
+        maxY = yIdx - 1
+    }
 }

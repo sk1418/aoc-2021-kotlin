@@ -36,31 +36,19 @@ fun main() {
     }
 
     measureTimeMillis {
-        part1_1(testInput).also {
-            println("TEST part1_1: $it")
-            check(it == 37)
-        }
-        println("part1_1: ${part1_1(input)}")
-        println()
-        part2_1(testInput).also {
-            println("TEST part1_2: $it")
-            check(it == 168)
-        }
-        println("part2_1: ${part2_1(input)}")
+        chkTestInput(part1_1(testInput), 37, "Part 1-1")
+        println("[Part 1-1]: ${part1_1(input)}")
+
+        chkTestInput(part2_1(testInput), 168, "Part 2-1")
+        println("[Part 2-1]: ${part2_1(input)}")
     }.also { println("::: Way1 elapsed: $it ms") }
 
     println("\n>> a way faster <<\n")
     measureTimeMillis {
-        part1_2(testInput).also {
-            println("TEST part1_2: $it")
-            check(it == 37)
-        }
-        println("part1_2: ${part1_2(input)}")
-        println()
-        part2_2(testInput).also {
-            println("TEST part2_2: $it")
-            check(it == 168)
-        }
-        println("part2_2: ${part2_2(input)}")
+        chkTestInput(part1_2(testInput), 37, "Part 2-1")
+        println("[Part 1-2]: ${part1_2(input)}")
+
+        chkTestInput(part2_2(testInput), 168, "Part 2-2")
+        println("[Part 2-2]: ${part2_2(input)}")
     }.also { println("::: Way2 elapsed: $it ms") }
 }

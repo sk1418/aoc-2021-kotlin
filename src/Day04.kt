@@ -2,7 +2,7 @@ fun main() {
     val input = readInput("Day04")
 
     fun toBoards(theList: List<String>): MutableList<Board> {
-        return theList.filterNot { it == "" }.windowed(5) {
+        return theList.filterNot { it == "" }.chunked(5) {
             Board(it)
         }.toMutableList()
     }

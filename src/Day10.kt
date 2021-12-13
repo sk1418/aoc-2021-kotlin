@@ -14,17 +14,11 @@ fun main() {
             .filter { it > 0 }.sorted().let { it[it.size / 2] }
     }
 
-    part1(testInput).also {
-        println("TEST part1: $it")
-        check(it == 26397L)
-    }
-    println("part1: ${part1(input)}")
+    chkTestInput(part1(testInput), 26397L, "Part 1")
+    println("[Part 1]: ${part1(input)}")
 
-    part2(testInput).also {
-        println("TEST part2: $it")
-        check(it == 288957L)
-    }
-    println("part2: ${part2(input)}")
+    chkTestInput(part2(testInput), 288957L, "Part 2")
+    println("[Part 2]: ${part2(input)}")
 }
 
 data class NavLineParser(val line: String) {
