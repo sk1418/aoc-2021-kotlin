@@ -23,11 +23,11 @@ fun main() {
         return step
     }
 
-    chkTestInput(part1(testInput), 1656L, "Part 1")
-    println("[Part 1]: ${part1(input)}")
+    chkTestInput(part1(testInput), 1656L, Part1)
+    println("$Part1: ${part1(input)}")
 
-    chkTestInput(part2(testInput), 195L, "Part 2")
-    println("[Part 2]: ${part2(input)}")
+    chkTestInput(part2(testInput), 195L, Part2)
+    println("$Part2: ${part2(input)}")
 }
 
 data class OctopusMatrix(val input: List<String>) {

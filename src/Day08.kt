@@ -23,10 +23,10 @@ fun main() {
     }
 
     chkTestInput(part1(testInput), 26, "Part 1")
-    println("[Part 1]: ${part1(input)}")
+    println("$Part1: ${part1(input)}")
 
     chkTestInput(part2(testInput), 61229, "Part 2")
-    println("[Part 2]: ${part2(input)}")
+    println("$Part2: ${part2(input)}")
 }
 
 /**

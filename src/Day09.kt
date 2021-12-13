@@ -13,11 +13,11 @@ fun main() {
         return HeightMap(input).findBasins().map { it.size }.sortedByDescending { it }.take(3).reduce { a, b -> a * b }
     }
 
-    chkTestInput(part1(testInput), 15, "Part 1")
-    println("[Part 1]: ${part1(input)}")
+    chkTestInput(part1(testInput), 15, Part1)
+    println("$Part1: ${part1(input)}")
 
-    chkTestInput(part2(testInput), 1134, "Part 2")
-    println("[Part 2]: ${part2(input)}")
+    chkTestInput(part2(testInput), 1134, Part2)
+    println("$Part2: ${part2(input)}")
 }
 
 data class HeightMap(val input: List<String>) {
@@ -37,16 +37,14 @@ data class HeightMap(val input: List<String>) {
     private fun Pair<Int, Int>.outOfBound() = first < 0 || first > maxI || second < 0 || second > maxJ
     //-------------------
 
-    private fun findLowPositions(): List<Pair<Int, Int>> {
-        val lowPos = mutableListOf<Pair<Int, Int>>()
-        for (i in 0..maxI) {
-            for (j in 0..maxJ) {
+    private fun findLowPositions() = mutableListOf<Pair<Int, Int>>().apply {
+        (0..maxI).forEach { i ->
+            (0..maxJ).forEach { j ->
                 if (isLow(Pair(i, j))) {
-                    lowPos += Pair(i, j)
+                    this += Pair(i, j)
                 }
             }
         }
-        return lowPos
     }
 
     private fun isLow(pos: Pair<Int, Int>) = matrix[pos.first][pos.second].let { value ->

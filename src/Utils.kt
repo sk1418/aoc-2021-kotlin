@@ -2,6 +2,9 @@ import java.io.File
 import java.math.BigInteger
 import java.security.MessageDigest
 
+const val Part1 = "Part 1"
+const val Part2 = "Part 2"
+
 /**
  * Reads lines from the given input txt file.
  */

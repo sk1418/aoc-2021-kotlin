@@ -20,7 +20,7 @@ fun main() {
                     if (r != -1) {
 //                    println("Num:$num, matrix Value:$r; result: ${num.toInt() * r}")
                         result = num.toInt() * r
-                        if (part == "part1")
+                        if (part == Part1)
                             return@out
                     }
                 }
@@ -29,8 +29,8 @@ fun main() {
         return result
     }
 
-    fun part1(input: List<String>) = doJob(input, "part1")
-    fun part2(input: List<String>) = doJob(input, "part2")
+    fun part1(input: List<String>) = doJob(input, Part1)
+    fun part2(input: List<String>) = doJob(input, Part2)
 
     println("part1: ${part1(input)}")
     println("part2: ${part2(input)}")

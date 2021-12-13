@@ -37,18 +37,18 @@ fun main() {
 
     measureTimeMillis {
         chkTestInput(part1_1(testInput), 37, "Part 1-1")
-        println("[Part 1-1]: ${part1_1(input)}")
+        println("Part 1-1: ${part1_1(input)}")
 
         chkTestInput(part2_1(testInput), 168, "Part 2-1")
-        println("[Part 2-1]: ${part2_1(input)}")
+        println("Part 2-1: ${part2_1(input)}")
     }.also { println("::: Way1 elapsed: $it ms") }
 
     println("\n>> a way faster <<\n")
     measureTimeMillis {
         chkTestInput(part1_2(testInput), 37, "Part 2-1")
-        println("[Part 1-2]: ${part1_2(input)}")
+        println("Part 1-2: ${part1_2(input)}")
 
         chkTestInput(part2_2(testInput), 168, "Part 2-2")
-        println("[Part 2-2]: ${part2_2(input)}")
+        println("Part 2-2: ${part2_2(input)}")
     }.also { println("::: Way2 elapsed: $it ms") }
 }

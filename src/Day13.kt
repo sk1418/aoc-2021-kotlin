@@ -1,3 +1,5 @@
+import java.awt.print.Paper
+
 // https://adventofcode.com/2021/day/13
 fun main() {
     val today = "Day13"
@@ -14,11 +16,11 @@ fun main() {
         return 0
     }
 
-    chkTestInput(part1(testInput), 17L, "Part 1")
-    println("[Part 1]: ${part1(input)}")
+    chkTestInput(part1(testInput), 17L, Part1)
+    println("$Part1: ${part1(input)}")
 
-    chkTestInput(part2(testInput), 0L, "Part 2")
-    println("[Part 2]: ${part2(input)}")
+    chkTestInput(part2(testInput), 0L, Part2)
+    println("$Part2: ${part2(input)}")
 }
 
 data class Paper(val input: List<String>) {
@@ -26,8 +28,6 @@ data class Paper(val input: List<String>) {
     private var foldRules: List<Pair<String, Int>>
     private var maxX = 0
     private var maxY = 0
-
-    operator fun Regex.contains(text: CharSequence): Boolean = this.matches(text)
 
     init { // parsing input
         val (pos, folds) = input.fold(mutableListOf<Pair<Int, Int>>() to mutableListOf<Pair<String, Int>>()) { (p, f), e ->
@@ -59,11 +59,10 @@ data class Paper(val input: List<String>) {
         }
     }
 
-    fun printMatrix() =
-        (0..maxY).forEach { y ->
-            (0..maxX).forEach { x -> print(if (matrix[y][x] > 0) "#" else ".") }
-            println()
-        }
+    fun printMatrix() = (0..maxY).forEach { y ->
+        (0..maxX).forEach { x -> print(if (matrix[y][x] > 0) "#" else " ") }
+        println()
+    }
 
     private fun doXFold(xIdx: Int) {
         (0..maxY).forEach { y ->
