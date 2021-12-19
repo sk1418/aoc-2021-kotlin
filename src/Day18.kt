@@ -123,15 +123,13 @@ data class SnailFishNumber(var theNumList: MutableList<Int>, val ps: Int = 100, 
 
         val (n1, n2) = lm[1] to lm[2]
 
-        //add to the first left regular num
-        for (i in ll.lastIndex downTo 0) {
+        for (i in ll.lastIndex downTo 0) { //add to the first left regular num
             if (isRegularNum(ll[i])) {
                 ll[i] += n1
                 break
             }
         }
-        //add to the next right regular num
-        for (i in lr.indices) {
+        for (i in lr.indices) { //add to the next right regular num
             if (isRegularNum(lr[i])) {
                 lr[i] += n2
                 break

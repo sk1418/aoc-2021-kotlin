@@ -1,12 +1,11 @@
-// https://adventofcode.com/2021/day/19
+// https://adventofcode.com/2021/day/7
 fun main() {
-    val today = "Day19"
+    val today = "DayX"
 
     val input = readInput(today)
     val testInput = readTestInput(today)
 
     fun part1(input: List<String>): Long {
-        //didn't make it. :-(
         return 0
     }
 
