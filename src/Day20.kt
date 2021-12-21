@@ -38,8 +38,8 @@ data class Day20Image(val origMatrix: MutableList<MutableList<Boolean>>, val dic
 
     fun enhance(rounds: Int) = this.apply {
         repeat(rounds) {
-            if (outputMatrix.isNotEmpty()) inputMatrix = outputMatrix
-            extendInOutput() //first extend the input image
+        if (outputMatrix.isNotEmpty()) inputMatrix = outputMatrix
+                extendInOutput() //first extend the input image
             inputMatrix.forEachIndexed { x, list ->
                 list.forEachIndexed { y, _ -> outputMatrix[x][y] = dict[getDictIdx(x, y)] }
             }
